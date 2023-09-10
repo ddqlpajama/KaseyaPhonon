@@ -1,13 +1,12 @@
 from fastapi import FastAPI
 
+from Models.ClassifiedTicket import ClassifiedTicketModel
+from Models.Ticket import TicketModel
+from AI.classifier import classify
+
 app = FastAPI()
 
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
+@app.post("/classify_ticket")
+async def classify_ticket(ticket: TicketModel) -> ClassifiedTicketModel:
+    return classify(ticket)

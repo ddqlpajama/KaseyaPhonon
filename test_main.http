@@ -1,11 +1,11 @@
 # Test your FastAPI endpoints
 
-GET http://127.0.0.1:8000/
+POST http://127.0.0.1:8000/classify_ticket
 Accept: application/json
+Content-Type: application/json
 
-###
-
-GET http://127.0.0.1:8000/hello/User
-Accept: application/json
-
-###
+{
+  "title": "I can't log in to my account",
+  "description": "Another member bites the dust.",
+  "candidates": ["New Member", "Terminated Member", "Problem"]
+}
